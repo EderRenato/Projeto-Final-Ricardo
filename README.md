@@ -4,24 +4,19 @@ Este projeto implementa uma pipeline completa de Inteligência Artificial para a
 
 ## 🛠️ Tecnologias e Ferramentas
 
-* 
-**Linguagem:** Python 3.10 
+* **Linguagem:** Python 3.10 
 
 
-* 
-**Modelagem:** TensorFlow/Keras (MLP), Random Forest, XGBoost 
+* **Modelagem:** TensorFlow/Keras (MLP), Random Forest, XGBoost 
 
 
-* 
-**Edge Computing:** TFLite Runtime (Modelos Float32 e INT8 Quantizado) 
+* **Edge Computing:** TFLite Runtime (Modelos Float32 e INT8 Quantizado) 
 
 
-* 
-**Geração de Dados:** Conditional GAN (cGAN) para aumento de dados sintéticos 
+* **Geração de Dados:** Conditional GAN (cGAN) para aumento de dados sintéticos 
 
 
-* 
-**Hardware Alvo:** Raspberry Pi Zero 2 W 
+* **Hardware Alvo:** Raspberry Pi Zero 2 W 
 
 
 
@@ -29,43 +24,34 @@ Este projeto implementa uma pipeline completa de Inteligência Artificial para a
 
 O modelo principal é uma rede neural perceptron multicamadas (MLP) com a seguinte estrutura: 
 
-1. 
-**Camada de Entrada:** 5 features (Vibração X, Y, Z, Nível Acústico e Temperatura) 
+1. **Camada de Entrada:** 5 features (Vibração X, Y, Z, Nível Acústico e Temperatura) 
 
 
-2. 
-**Dense (64 unidades)** + Batch Normalization + Dropout (0.3) 
+2. **Dense (64 unidades)** + Batch Normalization + Dropout (0.3) 
 
 
-3. 
-**Dense (32 unidades)** + Batch Normalization + Dropout (0.2) 
+3. **Dense (32 unidades)** + Batch Normalization + Dropout (0.2) 
 
 
-4. 
-**Dense (16 unidades)** 
+4. **Dense (16 unidades)** 
 
 
-5. 
-**Saída (Softmax):** 4 classes de falha 
+5. **Saída (Softmax):** 4 classes de falha 
 
 
 
 ### Classes Monitoradas:
 
-* 
-`0`: Bearing Fault (Falha de Rolamento) 
+* `0`: Bearing Fault (Falha de Rolamento) 
 
 
-* 
-`1`: Imbalance (Desbalanceamento) 
+* `1`: Imbalance (Desbalanceamento) 
 
 
-* 
-`2`: Normal (Operação Normal) 
+* `2`: Normal (Operação Normal) 
 
 
-* 
-`3`: Overheating (Superaquecimento) 
+* `3`: Overheating (Superaquecimento) 
 
 
 
@@ -98,41 +84,33 @@ python3 inference1.py --mode benchmark --model model_quantized_int8.tflite
 
 O projeto gera uma série de análises detalhadas:
 
-* 
-**Análise Exploratória:** Distribuição de features (`02_feature_distributions.png`) e correlação (`03_correlation.png`). 
+* **Análise Exploratória:** Distribuição de features (`02_feature_distributions.png`) e correlação (`03_correlation.png`). 
 
 
-* 
-**Desempenho:** Curvas de aprendizado (`07_training_curves.png`) e validação K-Fold (`08_kfold_results.png`). 
+* **Desempenho:** Curvas de aprendizado (`07_training_curves.png`) e validação K-Fold (`08_kfold_results.png`). 
 
 
-* 
-**Métricas:** Matriz de Confusão (`10_confusion_matrix.png`) e Curva ROC Multiclasse (`11_roc_curve.png`). 
+* **Métricas:** Matriz de Confusão (`10_confusion_matrix.png`) e Curva ROC Multiclasse (`11_roc_curve.png`). 
 
 
-* 
-**Dados Sintéticos:** Perda da GAN (`13_gan_loss.png`) e comparação PCA entre dados reais e sintéticos (`14_pca_real_vs_synthetic.png`). 
+* **Dados Sintéticos:** Perda da GAN (`13_gan_loss.png`) e comparação PCA entre dados reais e sintéticos (`14_pca_real_vs_synthetic.png`). 
 
 
 
 ## 📂 Estrutura de Arquivos Principal
 
-* 
-`inference1.py`: Script principal de inferência otimizada. 
+* `inference1.py`: Script principal de inferência otimizada. 
 
 
-* 
-`model_quantized_int8.tflite`: Modelo ultra-leve para o Pi Zero. 
+* `model_quantized_int8.tflite`: Modelo ultra-leve para o Pi Zero. 
 
 
-* 
-`scaler_params.json`: Parâmetros de normalização (Z-score). 
+* `scaler_params.json`: Parâmetros de normalização (Z-score). 
 
 
-* 
-`test_data.csv`: Dataset de 15% reservado para teste final (evitando *data leakage*). 
+* `test_data.csv`: Dataset de 15% reservado para teste final (evitando *data leakage*). 
 
-
+* `results/`: Resultados encontrados nas execuções dos autores
 
 
 ## 👥 Autores
